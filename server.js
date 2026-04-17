@@ -17,9 +17,18 @@ app.post("/translate", async (req, res) => {
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: "gpt-5-nano",
-        input: `Определи, является ли текст сленгом или формальным. Перепиши его в противоположный стиль:\n${text}`
-      })
+  model: "gpt-4o-mini",
+  messages: [
+    {
+      role: "system",
+      content: "Определи, является ли текст сленгом или формальным. Перепиши его в противоположный стиль"
+    },
+    {
+      role: "user",
+      content: text
+    }
+  ]
+})
     });
 
     const data = await response.json();
