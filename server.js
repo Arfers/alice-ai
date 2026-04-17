@@ -34,10 +34,9 @@ app.post("/translate", async (req, res) => {
     const data = await response.json();
 
 res.json({
-  result:
-    data.output_text ||
-    data.output?.[0]?.content?.[0]?.text ||
-    "Ошибка генерации"
+result:
+  data.choices?.[0]?.message?.content ||
+  "Ошибка генерации"
 });
 
   } catch (err) {
