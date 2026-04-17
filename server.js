@@ -13,7 +13,7 @@ app.post("/translate", async (req, res) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer ${process.env.OPENAI_API_KEY}`"
+      "Authorization": "Bearer ${process.env.OPENAI_API_KEY}"
     },
     body: JSON.stringify({
       model: "gpt-5-nano",
@@ -23,9 +23,9 @@ app.post("/translate", async (req, res) => {
 
   const data = await response.json();
 
-  res.json({
-    result: data.output[0].content[0].text
-  });
+res.json({
+  result: data.output_text
+});
 });
 
 app.listen(3000, () => console.log("server running"));
