@@ -10,7 +10,7 @@ app.post("/translate", async (req, res) => {
   try {
     const { text } = req.body;
 
-    const response = await fetch("https://api.openai.com/v1/responses", {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
